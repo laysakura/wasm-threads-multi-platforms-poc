@@ -11,3 +11,9 @@ ls target/wasm32-wasi/debug/*.wasm
 cargo wasi build --release
 ls target/wasm32-wasi/debug/*.wasm
 ```
+
+### Testing
+
+```console
+cargo wasi test
+```
