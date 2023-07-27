@@ -1,9 +1,15 @@
+use std::thread;
+
 #[no_mangle]
 pub extern "C" fn fib(n: u32) -> u32 {
     if n <= 1 {
         n
     } else {
-        fib(n - 1) + fib(n - 2)
+        let fib1_handle = thread::spawn(move || fib(n - 1));
+        let fib2 = fib(n - 2);
+
+        let fib1 = fib1_handle.join().unwrap();
+        fib1 + fib2
     }
 }
 
